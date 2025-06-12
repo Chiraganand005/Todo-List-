@@ -1,0 +1,218 @@
+:root {
+    --bg-color: linear-gradient(to bottom right, #e0f7fa, #e1bee7);
+    --container-bg: white;
+    --text-color: #333;
+    --input-border: #ccc;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --task-bg: #f9f9f9;
+    --edit-btn-color: #007bff;
+    --edit-btn-hover: #0056b3;
+    --delete-btn-color: #dc3545;
+    --delete-btn-hover: #a71d2a;
+}
+
+
+body.dark-mode {
+    --bg-color: #111827; /* Deep black/gray for modern dark mode */
+    --container-bg: #1f2937; /* Dark gray for container */
+    --text-color: #d1d5db; /* Light gray for text readability */
+    --input-border: #4b5563; /* Subtle gray for input border */
+    --button-bg: #3b82f6; /* Softer blue for Add button */
+    --button-hover-bg: #2563eb; /* Slightly darker blue on hover */
+    --task-bg: #374151; /* Medium gray for task items */
+    --edit-btn-color: #60a5fa; /* Light blue for edit button */
+    --edit-btn-hover: #3b82f6; /* Darker blue on hover */
+    --delete-btn-color: #f87171; /* Softer red for delete button */
+    --delete-btn-hover: #ef4444; /* Darker red on hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: var(--container-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin: 0;
+    font-size: 2rem;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--text-color);
+}
+
+#theme-toggle .sun-icon {
+    display: block;
+}
+
+#theme-toggle .moon-icon {
+    display: none;
+}
+
+body.dark-mode #theme-toggle .sun-icon {
+    display: none;
+}
+
+body.dark-mode #theme-toggle .moon-icon {
+    display: block;
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    color: var(--text-color);
+    background: var(--container-bg);
+}
+
+input[type="text"]:focus {
+    border-color: var(--button-bg);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: var(--button-hover-bg);
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--task-bg);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--text-color);
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item.completed span.task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.task-text {
+    flex: 1;
+}
+
+.todo-item button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.edit-btn {
+    color: var(--edit-btn-color);
+}
+
+.edit-btn:hover {
+    color: var(--edit-btn-hover);
+}
+
+.delete-btn {
+    color: var(--delete-btn-color);
+}
+
+.delete-btn:hover {
+    color: var(--delete-btn-hover);
+}
+
+.edit-btn svg, .delete-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
